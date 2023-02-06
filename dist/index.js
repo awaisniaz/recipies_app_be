@@ -16,6 +16,8 @@ const server = new apollo_server_express_1.ApolloServer({ typeDefs, resolvers })
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 app.use('/recipies', recipes_1.default);
+app.use(express_1.default.static(__dirname + '/public'));
+app.use(express_1.default.static('uploads'));
 server.start().then(res => {
     server.applyMiddleware({ app });
     app.listen({ port: 3000 }, () => console.log(`🚀 Server ready at http://localhost:3000${server.graphqlPath}`));

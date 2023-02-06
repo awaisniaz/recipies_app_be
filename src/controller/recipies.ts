@@ -8,5 +8,27 @@ export const recipes_controller = {
         })
 
 
+    },
+    uploadPhotos: async (req: any, res: Response) => {
+
+        if (!req.file) {
+            console.log("No file received");
+            return res.send({
+                success: false
+            });
+
+        } else {
+            console.log(req?.file)
+            const recipies = await recipesModel.findOne({
+                _id: "63da1b17dbe6be75a9a40740"
+            })
+            recipies.photos = [...recipies.photos, "http://localhost:3000/" + req?.file?.path]
+            console.log(recipies)
+            await recipies.save()
+            console.log('file received');
+            return res.send({
+                success: true
+            })
+        }
     }
 }

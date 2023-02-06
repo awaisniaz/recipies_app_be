@@ -17,16 +17,20 @@ type add_recipies_data_output {
     ingredients:[String],
     type:String,
     categories:String,
-    photo:String
+    photos:[String]
 }
 type File {
     filename: String!
     mimetype: String!
     encoding: String!
   }
+  input recipie {
+    id:String
+  }
 type Query{
     add_recipies(input:add_recipies_data):add_recipies_data_output,
-    getRecipies:[add_recipies_data_output]
+    getRecipies:[add_recipies_data_output],
+    getRecipiesById(input:recipie):add_recipies_data_output
 }
 `;
 //# sourceMappingURL=recipies.js.map
