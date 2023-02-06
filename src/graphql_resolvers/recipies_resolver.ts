@@ -29,6 +29,17 @@ export const recipies_resolver = {
             else {
                 return "Some technical Error Please Try Again"
             }
+        },
+        getRecipiesById: async (parent: any, args: any, context: any) => {
+            const id = args.input.id
+            console.log(id)
+            const recipie = await recipesModel.findOne({ _id: id })
+            if (recipie) {
+                return recipie
+            }
+
+            return {}
+
         }
     },
     // Mutation: {

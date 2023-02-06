@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 app.use('/recipies', router);
 
+app.use(express.static(__dirname + '/public'));
+app.use(express.static('uploads'));
+
 server.start().then(res => {
   server.applyMiddleware({ app });
 

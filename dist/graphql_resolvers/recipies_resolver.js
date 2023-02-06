@@ -41,6 +41,15 @@ exports.recipies_resolver = {
             else {
                 return "Some technical Error Please Try Again";
             }
+        }),
+        getRecipiesById: (parent, args, context) => __awaiter(void 0, void 0, void 0, function* () {
+            const id = args.input.id;
+            console.log(id);
+            const recipie = yield recipies_1.default.findOne({ _id: id });
+            if (recipie) {
+                return recipie;
+            }
+            return {};
         })
     },
     // Mutation: {
